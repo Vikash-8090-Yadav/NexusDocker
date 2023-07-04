@@ -9,21 +9,22 @@ on:
 
 jobs:
   build:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
     - name: docker login 
       env:
         DOCKER_USER: vikash98yadav
-        DOCKER_PASSWORD: ${{secrets.pass}}
+        DOCKER_PASSWORD: ${{secrets.PASS}}
       run: |
-        docker login -u  $DOCKER_USER -p DOCKER_PASSWORD
+        docker login -u  $DOCKER_USER -p $DOCKER_PASSWORD
     - name: build  the docker image
-      run: docker build . --file Dockerfile --tag vikash98yadav/nexusdocker
+      run: |
+        docker build . --file Dockerfile --tag vikash98yadav/nexudocker:latest
 
     - name: push to dockerhub
-      run: docker push vikash98yadav/nexusdocker
+      run: docker push vikash98yadav/nexusdocker:latest
 
 
 
