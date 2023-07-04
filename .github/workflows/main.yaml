@@ -21,7 +21,7 @@ jobs:
         docker login -u  $DOCKER_USER -p $DOCKER_PASSWORD
     - name: build  the docker image
       run: |
-        docker build . --file Dockerfile --tag vikash98yadav/nexudocker:latest
+        docker build . --file Dockerfile --tag vikash98yadav/nexudocker
 
     - name: push to dockerhub
       run: docker push vikash98yadav/nexusdocker:latest
