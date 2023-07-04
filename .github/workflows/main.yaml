@@ -18,7 +18,7 @@ jobs:
         DOCKER_USER: vikash98yadav
         DOCKER_PASSWORD: ${{secrets.PASS}}
       run: |
-        docker login -u  $DOCKER_USER -p DOCKER_PASSWORD
+        docker login -u  $DOCKER_USER -p $DOCKER_PASSWORD
     - name: build  the docker image
       run: docker build . --file Dockerfile --tag vikash98yadav/nexusdocker
 
