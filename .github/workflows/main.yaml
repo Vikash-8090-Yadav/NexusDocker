@@ -1,0 +1,29 @@
+name: docker hub
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+
+jobs:
+  build:
+    run-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker login 
+      env:
+        DOCKER_USER: vikash98yadav
+        DOCKER_PASSWORD: ${{secrets.pass}}
+      run: |
+        docker login -u  $DOCKER_USER -p DOCKER_PASSWORD
+    - name: build  the docker image
+      run: docker build . --file Dockerfile --tag vikash98yadav/nexusdocker
+
+    - name: push to dockerhub
+      run: docker push vikash98yadav/nexusdocker
+
+
+
