@@ -24,7 +24,8 @@ jobs:
         docker build . --file Dockerfile --tag vikash98yadav/nexudocker
 
     - name: push to dockerhub
-      run: docker push vikash98yadav/nexusdocker:latest
+      run: |
+        docker push vikash98yadav/nexusdocker
 
 
 
